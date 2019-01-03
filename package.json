@@ -1,0 +1,50 @@
+{
+  "name": "simple-graphql-assembler",
+  "version": "0.0.1",
+  "description": "Simple backend graphql shcema assembler for apollo projects",
+  "main": "index.js",
+  "author": "Metál Ádám",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --env=node",
+    "lint": "eslint src",
+    "ci": "yarn lint && yarn test",
+    "husky": "husky-upgrade"
+  },
+  "devDependencies": {
+    "eslint": "^5.11.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "graphql": "^14.0.2",
+    "graphql-tools": "^4.0.3",
+    "husky": "^1.3.1",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.15.3",
+    "pretty-quick": "^1.8.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js}",
+      "!**/node_modules/**",
+      "!coverage/**"
+    ],
+    "coverageDirectory": "coverage",
+    "setupTestFrameworkScriptFile": "./jest-setup.js"
+  }
+}
