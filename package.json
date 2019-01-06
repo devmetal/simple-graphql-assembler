@@ -7,11 +7,12 @@
   "license": "MIT",
   "scripts": {
     "test": "jest --env=node",
-    "lint": "eslint src",
+    "lint": "eslint lib/ example/",
     "ci": "yarn lint && yarn test",
     "husky": "husky-upgrade"
   },
   "devDependencies": {
+    "apollo-server": "^2.3.1",
     "eslint": "^5.11.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -21,7 +22,8 @@
     "jest": "^23.6.0",
     "lint-staged": "^8.1.0",
     "prettier": "^1.15.3",
-    "pretty-quick": "^1.8.0"
+    "pretty-quick": "^1.8.0",
+    "shortid": "^2.2.14"
   },
   "dependencies": {
     "lodash": "^4.17.11"
@@ -42,7 +44,9 @@
     "collectCoverageFrom": [
       "**/*.{js}",
       "!**/node_modules/**",
-      "!coverage/**"
+      "!coverage/**",
+      "!example/**",
+      "!jest-setup.js"
     ],
     "coverageDirectory": "coverage",
     "setupTestFrameworkScriptFile": "./jest-setup.js"

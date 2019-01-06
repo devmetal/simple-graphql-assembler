@@ -1,0 +1,10 @@
+type Hero {
+  id: ID!
+  name: String!
+  actions: [Action]
+}
+
+extend type Query {
+  heroes: [Hero]
+  hero(id: ID!): Hero
+}
