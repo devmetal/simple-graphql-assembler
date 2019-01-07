@@ -21,7 +21,7 @@ extend type Query {
 }
 ```
 
-The resolver modules had to default export a plain object, with a **__name** property. Its important, and its validated, because the package will not figure out the key of your resolvers in the end resolvers object.
+The resolver modules had to default export a plain object, with a **\_\_name** property. Its important, and its validated, because the package will not figure out the key of your resolvers in the end resolvers object.
 
 ```JavaScript
 // hero.resolver.js
@@ -45,7 +45,7 @@ module.exports = {
 };
 ```
 
-The **__name** field will be removed from the final resolvers tree.
+The **\_\_name** field will be removed from the final resolvers tree.
 
 The concatenation of gql files and resolvers are two separated thing. The package will not search for specific resolvers and type definition files. The two pattern is a .gql extenstion and a .resolver.js postfix.
 
@@ -54,11 +54,13 @@ You can see, i put the Query under the Hero resolver. Its not necessary. If the 
 ### installation
 
 #### npm
+
 ```
 npm install simple-graphql-assembler
 ```
 
 #### yarn
+
 ```
 yarn add simple-graphql-assembler
 ```
@@ -82,6 +84,14 @@ if (errors) {
   console.log(errors);
   process.exit(1);
 }
+
+console.log(resolvers);
+/*
+{ Mutation: { addAction: [Function: addAction] },
+  Action: { hero: [Function: hero] },
+  Query: { heroes: [Function: heroes], hero: [Function: hero] },
+  Hero: { actions: [Function: actions] } }
+*/
 
 const server = new ApolloServer({
   typeDefs: gql(typeDefs),
