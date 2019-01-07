@@ -16,7 +16,7 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "yarn.lock",
+    "package.lock",
     "/lib",
     "!examples/",
     "!**/__fixtures__/",
@@ -26,7 +26,7 @@
   "scripts": {
     "test": "jest --env=node",
     "lint": "eslint lib/ example/",
-    "ci": "yarn lint && yarn test",
+    "ci": "npm run lint && npm run test",
     "husky": "husky-upgrade"
   },
   "devDependencies": {
