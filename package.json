@@ -2,13 +2,31 @@
   "name": "simple-graphql-assembler",
   "version": "0.0.1",
   "description": "Simple backend graphql shcema assembler for apollo projects",
-  "main": "index.js",
-  "author": "Metál Ádám",
+  "author": "Metál Ádám <devmetal91@gmail.com> (https://github.com/devmetal)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devmetal/simple-graphql-assembler.git"
+  },
   "license": "MIT",
+  "keywords": [
+    "apollo",
+    "graphql",
+    "shcema"
+  ],
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "package.lock",
+    "/lib",
+    "!examples/",
+    "!**/__fixtures__/",
+    "!**/__mocks__/",
+    "!**/__tests__/"
+  ],
   "scripts": {
     "test": "jest --env=node",
     "lint": "eslint lib/ example/",
-    "ci": "yarn lint && yarn test",
+    "ci": "npm run lint && npm run test",
     "husky": "husky-upgrade"
   },
   "devDependencies": {
@@ -27,6 +45,9 @@
   },
   "dependencies": {
     "lodash": "^4.17.11"
+  },
+  "engines": {
+    "node": ">=8.0.0"
   },
   "husky": {
     "hooks": {
