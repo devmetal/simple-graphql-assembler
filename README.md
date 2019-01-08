@@ -3,9 +3,9 @@
 
 ## simple-graphql-assembler
 
-The main goal with this package to create a type definitions and resolvers based on the selected folder .gql and resolver.js files. The main function will find the .gql and .resolver.js files and creates the input typeDefs and resolvers for ApolloServer.
+The main goal of this package is to create type definitions and resolvers based on the selected folder .qql and resolver.js files. The main funtion will create the input tpyeDefs and resolvers for the AppolloServer by searching for .qql and .resolver.js files.
 
-The format of gql files are not validated, and simply just reduced all to one string variable.
+The qql file formats are not validated, just simply reduced to a one string variable.
 
 ```gql
 // hero.gql
@@ -21,7 +21,7 @@ extend type Query {
 }
 ```
 
-The resolver modules had to default export a plain object, with a **\_\_name** property. Its important, and its validated, because the package will not figure out the key of your resolvers in the end resolvers object.
+It is required in the resolver modules to export a plain object with a **\_\_name** property, because the package cannot figure out the key of the end resolver object.
 
 ```JavaScript
 // hero.resolver.js
@@ -47,9 +47,9 @@ module.exports = {
 
 The **\_\_name** field will be removed from the final resolvers tree.
 
-The concatenation of gql files and resolvers are two separated thing. The package will not search for specific resolvers and type definition files. The two pattern is a .gql extenstion and a .resolver.js postfix.
+The qql file and resolver concatenations are separeted. The package will not search for specific resolver and type definition files. The patterns are based on the .qql extension and the .resolver.js postfix.
 
-You can see, i put the Query under the Hero resolver. Its not necessary. If the package saw the Mutation, or Query named property in your resolvers, they will be moved to a reduced separated property in the final tree.
+In the exameple I put the Query under the Hero resolver but it is not nencessary, because the package will search for the Mutation or the Query named property in the resolver and moves them to the final tree in a separeted reduced property.
 
 ### installation
 
@@ -73,14 +73,14 @@ const assemble = require('simple-graphql-assembler');
 
 const { typeDefs, resolvers, errors } = assemble(__dirname);
 /*
-The errors contains a validation errors.
-Two specific rules are here:
+The errors contains the validation errors.
+Two specific rules:
    - Resolvers has to be a plain object
-   - Resolvers must contains a __name property (string)
+   - Resolvers must contain a __name property (String)
 */
 
+// validation errors
 if (errors) {
-  // validation errors
   console.log(errors);
   process.exit(1);
 }
