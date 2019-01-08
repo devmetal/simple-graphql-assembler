@@ -3,9 +3,9 @@
 
 ## simple-graphql-assembler
 
-The main goal of this package is to create type definitions and resolvers based on the selected folder .qql and resolver.js files. The main funtion will create the input tpyeDefs and resolvers for the AppolloServer by searching for .qql and .resolver.js files.
+The main goal of this package is to create type definitions and resolvers based on the selected folder .gql and .resolver.js files. The main funtion will create the input tpyeDefs and resolvers for the AppolloServer by searching for .gql and .resolver.js files.
 
-The qql file formats are not validated, just simply reduced to a one string variable.
+The .gql file formats are not validated, just simply reduced to a one string variable.
 
 ```gql
 // hero.gql
@@ -47,9 +47,9 @@ module.exports = {
 
 The **\_\_name** field will be removed from the final resolvers tree.
 
-The qql file and resolver concatenations are separeted. The package will not search for specific resolver and type definition files. The patterns are based on the .qql extension and the .resolver.js postfix.
+The gql file and resolver concatenations are separeted. The package will not search for specific resolver and type definition files. The patterns are based on the .gql extension and the .resolver.js postfix.
 
-In the exameple I put the Query under the Hero resolver but it is not nencessary, because the package will search for the Mutation or the Query named property in the resolver and moves them to the final tree in a separeted reduced property.
+In the example i put the Query under the Hero resolver but it is not necessary, because the package will search for the Mutation or the Query named property in the resolver and moves them to the final tree in a separeted reduced property.
 
 ### installation
 
