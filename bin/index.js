@@ -28,11 +28,16 @@ const args = yargs
   .help('h')
   .alias('h', 'help').argv;
 
+const main = () => {
+  const typeDefs = onlyTypeDefs(args.root);
+  const destination = path.resolve(args.root, args.output);
+
+  fs.writeFileSync(destination, typeDefs);
+};
+
 log('Thank you for using this package!');
 log('I wish you have a grat day!');
 
-const typeDefs = onlyTypeDefs(args.root);
-const destination = path.resolve(args.root, args.output);
+main();
 
-fs.writeFileSync(destination, typeDefs);
 log('Your gql file is ready');
