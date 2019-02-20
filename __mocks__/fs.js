@@ -7,6 +7,9 @@ const fs = jest.genMockFromModule('fs');
 // `fs` APIs are used.
 let mockFiles = Object.create(null);
 
+// Used for mocking writeSync. The last writeSync call content will be stored here
+const writes = {};
+
 function __setMockFiles(newMockFiles) {
   mockFiles = Object.create(null);
 
@@ -67,9 +70,19 @@ function readFileSync(file) {
   return mock.content;
 }
 
+function writeFileSync(file, content) {
+  writes[file] = content;
+}
+
+function __getWrites(file) {
+  return writes[file] || '';
+}
+
 fs.lstatSync = lstatSync;
 fs.readdirSync = readdirSync;
 fs.readFileSync = readFileSync;
+fs.writeFileSync = writeFileSync;
 fs.__setMockFiles = __setMockFiles;
+fs.__getWrites = __getWrites;
 
 module.exports = fs;
