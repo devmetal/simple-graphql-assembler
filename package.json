@@ -1,6 +1,6 @@
 {
   "name": "simple-graphql-assembler",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Simple backend graphql shcema assembler for apollo projects",
   "author": "Metál Ádám <devmetal91@gmail.com> (https://github.com/devmetal)",
   "repository": {
