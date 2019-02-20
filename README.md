@@ -102,3 +102,21 @@ server.listen().then(({ url }) => {
   console.log(`Example server listen at ${url}`);
 });
 ```
+### cli usage
+
+I added a tool for cli usage, the tool is called **make-typedefs** This tool will be traverse the current working directory for .gql files and with a very simple technique (copy) it will create one single file as a merged schema.gql.
+
+```bash
+Usage: make-typedefs [options]
+
+Options:
+  --version     Show version number                                    [boolean]
+  --root, -r    Root folder of your gql definitions and resolvers [default: "."]
+  --output, -o  Output file for type definitions       [default: "./schema.gql"]
+  -h, --help    Show help                                              [boolean]
+
+Examples:
+  make-typedefs -r . -o ./schema.gql  Create the gql type definition file for
+                                      your definitions from the current
+                                      directory
+```
